@@ -1,0 +1,95 @@
+/*
+    See the JupyterLab Developer Guide for useful CSS Patterns:
+
+    https://jupyterlab.readthedocs.io/en/stable/developer/css.html
+*/
+
+/* stylelint-disable */
+
+.gridwidth-button {
+  color: rgb(68, 36, 127);
+  background-color: rgb(229, 228, 228) !important;
+  border: 1px solid #400 !important;
+  border-radius: 3px;
+}
+
+
+.jp-Notebook {
+
+  & .cell-tag-level_basic {
+    background-color: #c7e8c7 !important;
+    border: 1px solid #040;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+
+  & .cell-tag-level_intermediate {
+    background-color: #cfcfe9 !important;
+    border: 1px solid #004;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+
+  & .cell-tag-level_advanced {
+    background-color: #f7d1d1 !important;
+    border: 1px solid #400;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+
+  & .cell-tag-framed_cell {
+    border: 3px ridge #400;
+    border-radius: 10px;
+    margin-bottom: 6px;
+  }
+
+  & .cell-tag-licence * {
+    color: #a0a0a080;
+  }
+
+
+  /* hide only the input of cells with the tag 'hide-input' */
+  & .cell-tag-hide-input .jp-Cell-inputWrapper .jp-Cell-inputArea {
+    display: none;
+  }
+
+  & .cell-tag-hide-output .jp-Cell-outputWrapper .jp-Cell-outputArea {
+    display: none;
+  }
+
+
+  /* gridwidth-nn classes allow to use a fraction of the width */
+  .jp-WindowedPanel-window {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    & jp-Cell { min-width: 200px; }
+
+    & .jp-Cell.cell-tag-gridwidth-12 { width: 50%; }
+    & .jp-Cell.cell-tag-gridwidth-13 { width: 33.3%; }
+    & .jp-Cell.cell-tag-gridwidth-23 { width: 66.7%; }
+    & .jp-Cell.cell-tag-gridwidth-14 { width: 25%; }
+    & .jp-Cell.cell-tag-gridwidth-24 { width: 50%; }        /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-34 { width: 75%; }
+    & .jp-Cell.cell-tag-gridwidth-15 { width: 20%; }
+    & .jp-Cell.cell-tag-gridwidth-25 { width: 40%; }
+    & .jp-Cell.cell-tag-gridwidth-35 { width: 60%; }
+    & .jp-Cell.cell-tag-gridwidth-45 { width: 80%; }
+    & .jp-Cell.cell-tag-gridwidth-16 { width: 16.6%; }
+    & .jp-Cell.cell-tag-gridwidth-26 { width: 33.3%; }      /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-36 { width: 50%; }        /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-46 { width: 66.7%; }      /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-56 { width: 83.3%; }
+
+    & .jp-Cell:not(
+      .cell-tag-gridwidth-12,
+      .cell-tag-gridwidth-13, .cell-tag-gridwidth-23,
+      .cell-tag-gridwidth-14, .cell-tag-gridwidth-24, .cell-tag-gridwidth-34,
+      .cell-tag-gridwidth-15, .cell-tag-gridwidth-25, .cell-tag-gridwidth-35, .cell-tag-gridwidth-45,
+      .cell-tag-gridwidth-16, .cell-tag-gridwidth-26, .cell-tag-gridwidth-36, .cell-tag-gridwidth-46, .cell-tag-gridwidth-56
+      ) {
+      width: 100%;
+    }
+  }
+}
