@@ -15,7 +15,11 @@ import { md_toggle_multi, } from 'jupyterlab-celltagsclasses'
 
 const PLUGIN_ID = 'jupyterlab-gridwidth:plugin'
 
-const ALL_GRIDWIDTHS = [12, 13, 23, 14, 24, 34, 15, 25, 35, 45, 16, 26, 36, 46, 56]
+const ALL_GRIDWIDTHS = [
+      '1-2', '1-3', '2-3', '1-4', '2-4', '3-4',
+      '1-5', '2-5', '3-5', '4-5',
+      '1-6', '2-6', '3-6', '4-6', '5-6',
+]
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_ID,
@@ -30,16 +34,15 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
     let command
 
-    // gridwidth-12..gridwidth-16
+    // gridwidth-1-2..gridwidth-1-6
     const ALL_GRIDWIDTHS_FULL = ALL_GRIDWIDTHS.map((gridwidth) => `gridwidth-${gridwidth}`)
     for (const gridwidth of ALL_GRIDWIDTHS) {
-      const [num, den] = [Math.floor(gridwidth / 10), gridwidth % 10]
-      command = `gridwidth:toggle-${num}${den}`
+      const [num, den] = gridwidth.split('-')
+      command = `gridwidth:toggle-${num}-${den}`
       app.commands.addCommand(command, {
         label: `cell to take ${num}/${den} space (toggle)`,
         execute: () => apply_on_cells(notebookTracker, Scope.Active,
           (cell: Cell) => {
-            console.log(`toggling gridwidth-${gridwidth} for cell ${cell.model.id}`)
             md_toggle_multi(cell, 'tags', `gridwidth-${gridwidth}`, ALL_GRIDWIDTHS_FULL)
           }
         )

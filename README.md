@@ -5,6 +5,7 @@
 JupyterLab extension to
 
 - tag cells so that they use a fraction of the width
+- can replace former 'split-cell' extension in the classic notebook
 
 ## Requirements
 
@@ -14,15 +15,15 @@ JupyterLab extension to
 
 ### available tags:
 
-- `gridwidth-12` (50%)
-- `gridwidth-13` (~33%) `gridwidth-23` (~66%)
-- `gridwidth-14` `gridwidth-24`, `gridwidth-34`
-- `gridwidth-15` `gridwidth-25`, `gridwidth-35`, `gridwidth-45`
-- `gridwidth-16` `gridwidth-26`, `gridwidth-36`, `gridwidth-46`, `gridwidth-56`
+- `gridwidth-1-2` (50%)
+- `gridwidth-1-3` (~33%) `gridwidth-2-3` (~66%)
+- `gridwidth-1-4` `gridwidth-2-4`, `gridwidth-3-4`
+- `gridwidth-1-5` `gridwidth-2-5`, `gridwidth-3-5`, `gridwidth-4-5`
+- `gridwidth-1-6` `gridwidth-2-6`, `gridwidth-3-6`, `gridwidth-4-6`, `gridwidth-5-6`
 
 ### palette commands
 
-- `gridwidth:toggle-12` and so on
+- `gridwidth:toggle-1-2` and so on
 - `gridwidth:cancel` to reset to full width
 
 ### keyboard shortcuts

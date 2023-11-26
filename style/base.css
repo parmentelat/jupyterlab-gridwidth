@@ -66,28 +66,28 @@
 
     & jp-Cell { min-width: 200px; }
 
-    & .jp-Cell.cell-tag-gridwidth-12 { width: 50%; }
-    & .jp-Cell.cell-tag-gridwidth-13 { width: 33.3%; }
-    & .jp-Cell.cell-tag-gridwidth-23 { width: 66.7%; }
-    & .jp-Cell.cell-tag-gridwidth-14 { width: 25%; }
-    & .jp-Cell.cell-tag-gridwidth-24 { width: 50%; }        /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-34 { width: 75%; }
-    & .jp-Cell.cell-tag-gridwidth-15 { width: 20%; }
-    & .jp-Cell.cell-tag-gridwidth-25 { width: 40%; }
-    & .jp-Cell.cell-tag-gridwidth-35 { width: 60%; }
-    & .jp-Cell.cell-tag-gridwidth-45 { width: 80%; }
-    & .jp-Cell.cell-tag-gridwidth-16 { width: 16.6%; }
-    & .jp-Cell.cell-tag-gridwidth-26 { width: 33.3%; }      /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-36 { width: 50%; }        /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-46 { width: 66.7%; }      /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-56 { width: 83.3%; }
+    & .jp-Cell.cell-tag-gridwidth-1-2 { width: 50%; }
+    & .jp-Cell.cell-tag-gridwidth-1-3 { width: 33.3%; }
+    & .jp-Cell.cell-tag-gridwidth-2-3 { width: 66.7%; }
+    & .jp-Cell.cell-tag-gridwidth-1-4 { width: 25%; }
+    & .jp-Cell.cell-tag-gridwidth-2-4 { width: 50%; }        /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-3-4 { width: 75%; }
+    & .jp-Cell.cell-tag-gridwidth-1-5 { width: 20%; }
+    & .jp-Cell.cell-tag-gridwidth-2-5 { width: 40%; }
+    & .jp-Cell.cell-tag-gridwidth-3-5 { width: 60%; }
+    & .jp-Cell.cell-tag-gridwidth-4-5 { width: 80%; }
+    & .jp-Cell.cell-tag-gridwidth-1-6 { width: 16.6%; }
+    & .jp-Cell.cell-tag-gridwidth-2-6 { width: 33.3%; }      /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-3-6 { width: 50%; }        /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-4-6 { width: 66.7%; }      /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-5-6 { width: 83.3%; }
 
     & .jp-Cell:not(
-      .cell-tag-gridwidth-12,
-      .cell-tag-gridwidth-13, .cell-tag-gridwidth-23,
-      .cell-tag-gridwidth-14, .cell-tag-gridwidth-24, .cell-tag-gridwidth-34,
-      .cell-tag-gridwidth-15, .cell-tag-gridwidth-25, .cell-tag-gridwidth-35, .cell-tag-gridwidth-45,
-      .cell-tag-gridwidth-16, .cell-tag-gridwidth-26, .cell-tag-gridwidth-36, .cell-tag-gridwidth-46, .cell-tag-gridwidth-56
+      .cell-tag-gridwidth-1-2,
+      .cell-tag-gridwidth-1-3, .cell-tag-gridwidth-2-3,
+      .cell-tag-gridwidth-1-4, .cell-tag-gridwidth-2-4, .cell-tag-gridwidth-3-4,
+      .cell-tag-gridwidth-1-5, .cell-tag-gridwidth-2-5, .cell-tag-gridwidth-3-5, .cell-tag-gridwidth-4-5,
+      .cell-tag-gridwidth-1-6, .cell-tag-gridwidth-2-6, .cell-tag-gridwidth-3-6, .cell-tag-gridwidth-4-6, .cell-tag-gridwidth-5-6
       ) {
       width: 100%;
     }
