@@ -24,6 +24,15 @@ there is no button (yet) in this extension to do the equivalent of the former 's
 - or command `gridwidth:toggle-1-2`
 - that you can bind to a keyboard shortcut of your choice
 
+### to convert your notebooks
+
+```bash
+split-cell-to-gridwidth notebook1 .. notebookN
+```
+
+will replace the old `cell_style: split` with the new `gridwidth-1-2` tag in all
+notebooks passed as arguments
+
 ### palette commands
 
 - `gridwidth:toggle-1-2` and so on
