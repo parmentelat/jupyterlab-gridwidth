@@ -7,19 +7,22 @@ JupyterLab extension to
 - tag cells so that they use a fraction of the width
 - can replace former 'split-cell' extension in the classic notebook
 
+It was have preferred not to re-use the term 'split', because in jupyterlab _split_ already means, well, to split a cell into 2 cells...
+
 ## Requirements
 
 - JupyterLab >= 4.0.0
 
 ## Usage
 
-### available tags:
+### as a replacement for for former `split-cell`
 
-- `gridwidth-1-2` (50%)
-- `gridwidth-1-3` (~33%) `gridwidth-2-3` (~66%)
-- `gridwidth-1-4` `gridwidth-2-4`, `gridwidth-3-4`
-- `gridwidth-1-5` `gridwidth-2-5`, `gridwidth-3-5`, `gridwidth-4-5`
-- `gridwidth-1-6` `gridwidth-2-6`, `gridwidth-3-6`, `gridwidth-4-6`, `gridwidth-5-6`
+there is no button (yet) in this extension to do the equivalent of the former 'split-cell' thing, you can use
+
+- either keyboard Ctrl-\ Ctrl-1 Ctrl-2 (meaning you want to use 1 / 2 of the horizontal space)
+- or type `gridwidth` in the Palette and pick 1/2
+- or command `gridwidth:toggle-1-2`
+- that you can bind to a keyboard shortcut of your choice
 
 ### palette commands
 
@@ -32,9 +35,19 @@ JupyterLab extension to
   remove any other tag that might be present
 - `Ctrl-\ Ctrl-0` to reset to full width
 
+### available tags:
+
+- `gridwidth-1-2` (50%)
+- `gridwidth-1-3` (~33%) `gridwidth-2-3` (~66%)
+- `gridwidth-1-4` `gridwidth-2-4`, `gridwidth-3-4`
+- `gridwidth-1-5` `gridwidth-2-5`, `gridwidth-3-5`, `gridwidth-4-5`
+- `gridwidth-1-6` `gridwidth-2-6`, `gridwidth-3-6`, `gridwidth-4-6`, `gridwidth-5-6`
+
 ### other controls
 
-since this exclusively relies on the presence of the above tags, you can also use jupyterlab's so called "Propert Inspector" feature; of course in this case you're in charge of dealing with duplicate tags...
+since this exclusively relies on the presence of the above tags, you can also
+use jupyterlab's so called "Propert Inspector" feature; of course in this case
+you're in charge of dealing with duplicate tags...
 
 ![Alt text](README-property-inspector.png)
 
