@@ -13,9 +13,7 @@
   border-radius: 3px;
 }
 
-
 .jp-Notebook {
-
   & .cell-tag-level_basic {
     background-color: #c7e8c7 !important;
     border: 1px solid #040;
@@ -47,7 +45,6 @@
     color: #a0a0a080;
   }
 
-
   /* hide only the input of cells with the tag 'hide-input' */
   & .cell-tag-hide-input .jp-Cell-inputWrapper .jp-Cell-inputArea {
     display: none;
@@ -57,37 +54,79 @@
     display: none;
   }
 
-
   /* gridwidth-nn classes allow to use a fraction of the width */
   .jp-WindowedPanel-window {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-    & jp-Cell { min-width: 200px; }
+    & jp-Cell {
+      min-width: 200px;
+    }
 
-    & .jp-Cell.cell-tag-gridwidth-1-2 { width: 50%; }
-    & .jp-Cell.cell-tag-gridwidth-1-3 { width: 33.3%; }
-    & .jp-Cell.cell-tag-gridwidth-2-3 { width: 66.7%; }
-    & .jp-Cell.cell-tag-gridwidth-1-4 { width: 25%; }
-    & .jp-Cell.cell-tag-gridwidth-2-4 { width: 50%; }        /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-3-4 { width: 75%; }
-    & .jp-Cell.cell-tag-gridwidth-1-5 { width: 20%; }
-    & .jp-Cell.cell-tag-gridwidth-2-5 { width: 40%; }
-    & .jp-Cell.cell-tag-gridwidth-3-5 { width: 60%; }
-    & .jp-Cell.cell-tag-gridwidth-4-5 { width: 80%; }
-    & .jp-Cell.cell-tag-gridwidth-1-6 { width: 16.6%; }
-    & .jp-Cell.cell-tag-gridwidth-2-6 { width: 33.3%; }      /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-3-6 { width: 50%; }        /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-4-6 { width: 66.7%; }      /* redundant */
-    & .jp-Cell.cell-tag-gridwidth-5-6 { width: 83.3%; }
+    & .jp-Cell.cell-tag-gridwidth-1-2 {
+      width: 50%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-1-3 {
+      width: 33.3%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-2-3 {
+      width: 66.7%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-1-4 {
+      width: 25%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-2-4 {
+      width: 50%;
+    } /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-3-4 {
+      width: 75%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-1-5 {
+      width: 20%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-2-5 {
+      width: 40%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-3-5 {
+      width: 60%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-4-5 {
+      width: 80%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-1-6 {
+      width: 16.6%;
+    }
+    & .jp-Cell.cell-tag-gridwidth-2-6 {
+      width: 33.3%;
+    } /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-3-6 {
+      width: 50%;
+    } /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-4-6 {
+      width: 66.7%;
+    } /* redundant */
+    & .jp-Cell.cell-tag-gridwidth-5-6 {
+      width: 83.3%;
+    }
 
-    & .jp-Cell:not(
-      .cell-tag-gridwidth-1-2,
-      .cell-tag-gridwidth-1-3, .cell-tag-gridwidth-2-3,
-      .cell-tag-gridwidth-1-4, .cell-tag-gridwidth-2-4, .cell-tag-gridwidth-3-4,
-      .cell-tag-gridwidth-1-5, .cell-tag-gridwidth-2-5, .cell-tag-gridwidth-3-5, .cell-tag-gridwidth-4-5,
-      .cell-tag-gridwidth-1-6, .cell-tag-gridwidth-2-6, .cell-tag-gridwidth-3-6, .cell-tag-gridwidth-4-6, .cell-tag-gridwidth-5-6
+    &
+      .jp-Cell:not(
+        .cell-tag-gridwidth-1-2,
+        .cell-tag-gridwidth-1-3,
+        .cell-tag-gridwidth-2-3,
+        .cell-tag-gridwidth-1-4,
+        .cell-tag-gridwidth-2-4,
+        .cell-tag-gridwidth-3-4,
+        .cell-tag-gridwidth-1-5,
+        .cell-tag-gridwidth-2-5,
+        .cell-tag-gridwidth-3-5,
+        .cell-tag-gridwidth-4-5,
+        .cell-tag-gridwidth-1-6,
+        .cell-tag-gridwidth-2-6,
+        .cell-tag-gridwidth-3-6,
+        .cell-tag-gridwidth-4-6,
+        .cell-tag-gridwidth-5-6
       ) {
       width: 100%;
     }

@@ -64,7 +64,7 @@ pip uninstall jupyterlab_gridwidth
 
 ### Development install
 
-***WARNING*** from this point on, this is the boilerplate text that comes with
+**_WARNING_** from this point on, this is the boilerplate text that comes with
 the extension cookie-cutter template; it is not guaranteed to be accurate
 
 Note: You will need NodeJS to build the extension package.
