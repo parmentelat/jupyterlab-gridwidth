@@ -1,6 +1,6 @@
 {
   "name": "jupyterlab-gridwidth",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Jlab extension for showing course levels and structure",
   "keywords": [
     "jupyter",
