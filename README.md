@@ -27,7 +27,7 @@ there is no button (yet) in this extension to do the equivalent of the former 's
 ### to convert your notebooks
 
 ```bash
-split-cell-to-gridwidth notebook1 .. notebookN
+splitcell-to-gridwidth notebook1 .. notebookN
 ```
 
 will replace the old `cell_style: split` with the new `gridwidth-1-2` tag in all
