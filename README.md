@@ -19,7 +19,7 @@ It was have preferred not to re-use the term 'split', because in jupyterlab _spl
 
 there is no button (yet) in this extension to do the equivalent of the former 'split-cell' thing, you can use
 
-- either keyboard Ctrl-\ Ctrl-1 Ctrl-2 (meaning you want to use 1 / 2 of the horizontal space)
+- either keyboard `Alt+1, Alt+2` (meaning you want to use 1 / 2 of the horizontal space)
 - or type `gridwidth` in the Palette and pick 1/2
 - or command `gridwidth:toggle-1-2`
 - that you can bind to a keyboard shortcut of your choice
@@ -31,9 +31,9 @@ there is no button (yet) in this extension to do the equivalent of the former 's
 
 ### keyboard shortcuts
 
-- `Ctrl-\ Ctrl-1 Ctrl-2` and so on; these will toggle the corresponding tag, and
+- `Alt+1, Alt+2` and so on; these will toggle the corresponding tag, and
   remove any other tag that might be present
-- `Ctrl-\ Ctrl-0` to reset to full width
+- `Alt+0` to reset to full width
 
 ### available tags:
 
