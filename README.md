@@ -55,7 +55,7 @@ notebooks passed as arguments
 ### other controls
 
 since this exclusively relies on the presence of the above tags, you can also
-use jupyterlab's so called "Propert Inspector" feature; of course in this case
+use jupyterlab's so called "Property Inspector" feature; of course in this case
 you're in charge of dealing with duplicate tags...
 
 ![Alt text](README-property-inspector.png)
