@@ -5,16 +5,16 @@
 
 /* eslint-disable prettier/prettier */
 
-import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
-import { ICommandPalette, ToolbarButton } from '@jupyterlab/apputils';
-import { INotebookTracker, NotebookPanel } from '@jupyterlab/notebook';
-import { Cell } from '@jupyterlab/cells';
+import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application'
+import { ICommandPalette, ToolbarButton } from '@jupyterlab/apputils'
+import { INotebookTracker, NotebookPanel } from '@jupyterlab/notebook'
+import { Cell } from '@jupyterlab/cells'
 
-import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses';
-import { md_toggle_multi } from 'jupyterlab-celltagsclasses';
-import { Menu } from '@lumino/widgets';
+import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses'
+import { md_toggle_multi } from 'jupyterlab-celltagsclasses'
+import { Menu } from '@lumino/widgets'
 
-const PLUGIN_ID = 'jupyterlab-gridwidth:plugin';
+const PLUGIN_ID = 'jupyterlab-gridwidth:plugin'
 
 const ALL_GRIDWIDTHS = [
   '1-2',
@@ -32,7 +32,7 @@ const ALL_GRIDWIDTHS = [
   '3-6',
   '4-6',
   '5-6'
-];
+]
 
 const plugin: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_ID,
@@ -91,56 +91,56 @@ const plugin: JupyterFrontEndPlugin<void> = {
     })
 
     // activate menu with commands
-    new CellWidthMenu(app, notebookTracker);
+    new CellWidthMenu(app, notebookTracker)
   }
 }
 
 // a lumino menu & a toolbar button to envok the menu
 class CellWidthMenu {
-  private menuOpen: boolean;
-  private preventOpen: boolean;
+  private menuOpen: boolean
+  private preventOpen: boolean
 
   constructor(app: JupyterFrontEnd, notebookTracker: INotebookTracker) {
-    this.menuOpen = false;
-    this.preventOpen = false;
-    this.createMenu(app, notebookTracker);
+    this.menuOpen = false
+    this.preventOpen = false
+    this.createMenu(app, notebookTracker)
   }
 
   createMenu(app: JupyterFrontEnd, notebookTracker: INotebookTracker) {
     // create a lumino menu
-    let menu = new Menu({ commands: app.commands });
-    menu.title.label = 'Cell Width';
-    
-    ALL_GRIDWIDTHS.forEach(gridwidth => {
-      const command = `gridwidth:toggle-${gridwidth.replace('-', '-')}`;
-      menu.addItem({ command });
-    });
+    const menu = new Menu({ commands: app.commands })
+    menu.title.label = 'Cell Width'
 
-    menu.addItem({ type: 'separator' });
-    menu.addItem({ command: 'gridwidth:cancel' });
-    
-    /** About to Close Event: When the aboutToClose event of the menu is emitted 
-     * (which happens just before the menu is actually closed), 
+    ALL_GRIDWIDTHS.forEach(gridwidth => {
+      const command = `gridwidth:toggle-${gridwidth.replace('-', '-')}`
+      menu.addItem({ command })
+    })
+
+    menu.addItem({ type: 'separator' })
+    menu.addItem({ command: 'gridwidth:cancel' })
+
+    /** About to Close Event: When the aboutToClose event of the menu is emitted
+     * (which happens just before the menu is actually closed),
      * the this.menuOpen property is set to false to indicate the menu is not open.
      * Simultaneously, this.preventOpen is set to true to prevent the menu from immediately reopening due to subsequent events.
      * A setTimeout call is used to reset this.preventOpen to false in the next event loop cycle. */
     menu.aboutToClose.connect(() => {
-      this.menuOpen = false;
-      this.preventOpen = true;
+      this.menuOpen = false
+      this.preventOpen = true
       // console.log('menu about to close event');
       setTimeout(() => {
-        this.preventOpen = false;
+        this.preventOpen = false
         // console.log('menu successfully closed and can be opened again.');
-      }, 0);
+      }, 0)
       // console.log('menu is waiting to be closed... prevent it to open...');
-    });
+    })
 
     // create a toolbar button to envok the menu
     const button = new ToolbarButton({
       // the icon is similar to the previous split-cell extension button icon
       iconClass: 'fa fa-arrows-h',
       /** Button Click Event: When the toolbar button is clicked, the click event handler checks the state of this.menuOpen.
-       * The this.menuOpen is then set to true, indicating the menu is now open. 
+       * The this.menuOpen is then set to true, indicating the menu is now open.
        * If it's true, the menu is currently open and should be closed.
        * If this.menuOpen is false and this.preventOpen is also false, the menu is not open and should be opened.
        * The rect object represents the button's position, and menu.open positions the menu at the bottom-left of the button.*/
@@ -149,22 +149,24 @@ class CellWidthMenu {
         if (this.menuOpen) {
           // Actually not envoked most of the time, no need to manually close the menu here,
           // because the menu will be closed automatically when this onClick event emits.
-          menu.close();
+          menu.close()
           // console.log('menu closed');
         } else if (!this.preventOpen) {
-          const rect = button.node.getBoundingClientRect();
-          menu.open(rect.left, rect.bottom);
-          this.menuOpen = true;
+          const rect = button.node.getBoundingClientRect()
+          menu.open(rect.left, rect.bottom)
+          this.menuOpen = true
           // console.log('menu opened');
         }
       },
       tooltip: 'Toogle Cell Width'
-    });
+    })
 
     // add the button to the notebook toolbar
-    notebookTracker.widgetAdded.connect((sender, notebookPanel: NotebookPanel) => {
-      notebookPanel.toolbar.insertItem(10, 'cellWidth', button);
-    });
+    notebookTracker.widgetAdded.connect(
+      (sender, notebookPanel: NotebookPanel) => {
+        notebookPanel.toolbar.insertItem(10, 'cellWidth', button)
+      }
+    )
   }
 }
 
