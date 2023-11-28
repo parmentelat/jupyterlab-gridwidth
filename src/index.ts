@@ -68,7 +68,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       palette.addItem({ command, category: 'gridwidth' })
       app.commands.addKeyBinding({
         command,
-        keys: ['Ctrl \\', `Ctrl ${num}`, `Ctrl ${den}`],
+        keys: [`Alt ${num}`, `Alt ${den}`],
         selector: '.jp-Notebook'
       })
     }
@@ -85,7 +85,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     palette.addItem({ command, category: 'gridwidth' })
     app.commands.addKeyBinding({
       command,
-      keys: ['Ctrl \\', 'Ctrl 0'],
+      keys: ['Alt 0'],
       selector: '.jp-Notebook'
     })
   }
