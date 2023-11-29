@@ -1,4 +1,4 @@
-# jupyterlab_gridwidth
+# jupyterlab-gridwidth
 
 [![Github Actions Status](https://github.com/parmentelat/jupyterlab-gridwidth/workflows/Build/badge.svg)](https://github.com/parmentelat/jupyterlab-gridwidth/actions/workflows/build.yml)
 
@@ -27,7 +27,7 @@ there is no button (yet) in this extension to do the equivalent of the former 's
 ### to convert your notebooks
 
 ```bash
-split-cell-to-gridwidth notebook1 .. notebookN
+splitcell-to-gridwidth notebook1 .. notebookN
 ```
 
 will replace the old `cell_style: split` with the new `gridwidth-1-2` tag in all
@@ -73,7 +73,7 @@ preserve the layout in jb's HTML output (not yet available)
 To install the extension, execute:
 
 ```bash
-pip install jupyterlab_gridwidth
+pip install jupyterlab-gridwidth
 ```
 
 ### Uninstall
@@ -81,7 +81,7 @@ pip install jupyterlab_gridwidth
 To remove the extension, execute:
 
 ```bash
-pip uninstall jupyterlab_gridwidth
+pip uninstall jupyterlab-gridwidth
 ```
 
 ### Development install
@@ -97,7 +97,7 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the jupyterlab_gridwidth directory
+# Change directory to the jupyterlab-gridwidth directory
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
@@ -134,7 +134,7 @@ jupyter lab build --minimize=False
 ### Development uninstall
 
 ```bash
-pip uninstall jupyterlab_gridwidth
+pip uninstall jupyterlab-gridwidth
 ```
 
 In development mode, you will also need to remove the symlink created by
