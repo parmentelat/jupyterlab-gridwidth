@@ -5,14 +5,15 @@
 
 /* eslint-disable prettier/prettier */
 
+import { Menu } from '@lumino/widgets'
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application'
 import { ICommandPalette, ToolbarButton } from '@jupyterlab/apputils'
-import { INotebookTracker, NotebookPanel } from '@jupyterlab/notebook'
+import { INotebookTracker } from '@jupyterlab/notebook'
+import { ISettingRegistry } from '@jupyterlab/settingregistry'
 import { Cell } from '@jupyterlab/cells'
 
 import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses'
 import { md_toggle_multi } from 'jupyterlab-celltagsclasses'
-import { Menu } from '@lumino/widgets'
 
 const PLUGIN_ID = 'jupyterlab-gridwidth:plugin'
 
@@ -37,11 +38,12 @@ const ALL_GRIDWIDTHS = [
 const plugin: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_ID,
   autoStart: true,
-  requires: [ICommandPalette, INotebookTracker],
+  requires: [ICommandPalette, INotebookTracker, ISettingRegistry],
   activate: (
     app: JupyterFrontEnd,
     palette: ICommandPalette,
-    notebookTracker: INotebookTracker
+    notebookTracker: INotebookTracker,
+    settingRegistry: ISettingRegistry
   ) => {
     console.log('extension jupyterlab-gridwidth is activating')
 
@@ -79,7 +81,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
       label: 'Restore Full Cell Width',
       execute: () =>
         apply_on_cells(notebookTracker, Scope.Active, (cell: Cell) => {
-          // console.log(`Restore Full Width for Cell ${cell.model.id}`)
           md_toggle_multi(cell, 'tags', '', ALL_GRIDWIDTHS_FULL)
         })
     })
@@ -90,29 +91,66 @@ const plugin: JupyterFrontEndPlugin<void> = {
       selector: '.jp-Notebook'
     })
 
-    // activate menu with commands
-    new CellWidthMenu(app, notebookTracker)
+    let button: ToolbarButton | undefined
+
+    function loadSetting(setting: ISettingRegistry.ISettings): void {
+      // Read the settings and convert to the correct type
+      const show_toolbar_button = setting.get('show_toolbar_button')
+        .composite as boolean
+
+      console.debug(`gridwidth extension, show_toolbar_button is read as ${show_toolbar_button}`)
+      // actually this is typed as MenuBar
+      const menubar = notebookTracker.currentWidget?.toolbar
+      if (!menubar) {
+        console.log("oops, too early")
+        return
+      }
+      if (show_toolbar_button) {
+        if (button) {
+          // console.debug("button already on")
+          return
+        }
+        button = new CellWidthMenu(app, notebookTracker).button
+        menubar.insertItem(10, 'cellWidth', button)
+      } else {
+        if (button === undefined) {
+          // console.debug("button already off")
+          return
+        }
+        button.dispose()
+        button = undefined
+      }
+    }
+
+    Promise.all([app.restored, settingRegistry.load(PLUGIN_ID)]).then(
+      ([_, setting]) => {
+        console.debug("gridwidth: triggering & arming loadSetting")
+        loadSetting(setting)
+        setting.changed.connect(loadSetting)
+      }
+    )
   }
 }
 
-// a lumino menu & a toolbar button to envok the menu
+// a lumino menu & a toolbar button to invoke the menu
 class CellWidthMenu {
   private menuOpen: boolean
   private preventOpen: boolean
+  public button: ToolbarButton
 
   constructor(app: JupyterFrontEnd, notebookTracker: INotebookTracker) {
     this.menuOpen = false
     this.preventOpen = false
-    this.createMenu(app, notebookTracker)
+    this.button = this.createButton(app, notebookTracker)
   }
 
-  createMenu(app: JupyterFrontEnd, notebookTracker: INotebookTracker) {
+  createButton(app: JupyterFrontEnd, notebookTracker: INotebookTracker) {
     // create a lumino menu
     const menu = new Menu({ commands: app.commands })
     menu.title.label = 'Cell Width'
 
     ALL_GRIDWIDTHS.forEach(gridwidth => {
-      const command = `gridwidth:toggle-${gridwidth.replace('-', '-')}`
+      const command = `gridwidth:toggle-${gridwidth}`
       menu.addItem({ command })
     })
 
@@ -160,13 +198,7 @@ class CellWidthMenu {
       },
       tooltip: 'Toogle Cell Width'
     })
-
-    // add the button to the notebook toolbar
-    notebookTracker.widgetAdded.connect(
-      (sender, notebookPanel: NotebookPanel) => {
-        notebookPanel.toolbar.insertItem(10, 'cellWidth', button)
-      }
-    )
+    return button
   }
 }
 

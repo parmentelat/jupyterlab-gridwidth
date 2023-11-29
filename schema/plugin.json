@@ -1,12 +1,12 @@
 {
-  "title": "gridwidth custom extension",
-  "description": "Settings of the jupyterlab-gridwidth extension.",
+  "title": "gridwidth",
+  "description": "Settings for jupyterlab-gridwidth",
   "properties": {
-    "show_level_buttons": {
+    "show_toolbar_button": {
       "type": "boolean",
-      "title": "show level buttons",
-      "description": "Show buttons to change the level of the current cell.",
-      "default": false
+      "title": "display button in toolbar",
+      "description": "The <-> button in the notebook toolbar gives access to a dropdown that allows for quick access to all available cell sizes, in addition to the palette and keyboard shortcuts.",
+      "default": true
     }
   },
   "additionalProperties": false,
