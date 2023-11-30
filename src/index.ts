@@ -91,44 +91,50 @@ const plugin: JupyterFrontEndPlugin<void> = {
       selector: '.jp-Notebook'
     })
 
-    let button: ToolbarButton | undefined
+    notebookTracker.widgetAdded.connect((tracker, _) => {
+      let button: ToolbarButton | undefined
 
-    function loadSetting(setting: ISettingRegistry.ISettings): void {
-      // Read the settings and convert to the correct type
-      const show_toolbar_button = setting.get('show_toolbar_button')
-        .composite as boolean
+      function loadSetting(setting: ISettingRegistry.ISettings): void {
+        // Read the settings and convert to the correct type
+        const show_toolbar_button = setting.get('show_toolbar_button')
+          .composite as boolean
 
-      console.debug(`gridwidth extension, show_toolbar_button is read as ${show_toolbar_button}`)
-      // actually this is typed as MenuBar
-      const menubar = notebookTracker.currentWidget?.toolbar
-      if (!menubar) {
-        console.log("oops, too early")
-        return
-      }
-      if (show_toolbar_button) {
-        if (button) {
-          // console.debug("button already on")
+        console.debug(
+          `gridwidth extension, show_toolbar_button from settings is ${show_toolbar_button}`
+        )
+        // actually this is typed as MenuBar
+        const menubar = tracker.currentWidget?.toolbar
+        if (!menubar) {
+          console.log('gridwidth: oops, too early')
           return
         }
-        button = new CellWidthMenu(app, notebookTracker).button
-        menubar.insertItem(10, 'cellWidth', button)
-      } else {
-        if (button === undefined) {
-          // console.debug("button already off")
-          return
+        if (show_toolbar_button) {
+          if (button) {
+            console.debug('gridwidth: button already on')
+            return
+          }
+          console.debug('gridwidth: adding button')
+          button = new CellWidthMenu(app, tracker).button
+          menubar.insertItem(10, 'gridWidth', button)
+        } else {
+          if (button === undefined) {
+            console.debug('gridwidth: button already off')
+            return
+          }
+          console.debug('gridwidth: disposing button')
+          button.dispose()
+          button = undefined
         }
-        button.dispose()
-        button = undefined
       }
-    }
 
-    Promise.all([app.restored, settingRegistry.load(PLUGIN_ID)]).then(
-      ([_, setting]) => {
-        console.debug("gridwidth: triggering & arming loadSetting")
-        loadSetting(setting)
-        setting.changed.connect(loadSetting)
-      }
-    )
+      Promise.all([app.restored, settingRegistry.load(PLUGIN_ID)]).then(
+        ([_, setting]) => {
+          console.debug('gridwidth: triggering & arming loadSetting')
+          loadSetting(setting)
+          setting.changed.connect(loadSetting)
+        }
+      )
+    })
   }
 }
 
