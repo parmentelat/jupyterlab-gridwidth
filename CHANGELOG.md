@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.5 2023 Nov 29
+
+- turn dropdown on or off with settings editor
+
 ## 0.1.4 2023 Nov 29
 
 - merged #5 - add button in toolbar
