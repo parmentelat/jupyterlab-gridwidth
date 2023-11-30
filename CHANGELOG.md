@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.6 2023 Nov 29
+
+- an attempt at improving issue #6
+- still not perfect, there are still glitches
+  when several notebooks are present
+
 ## 0.1.5 2023 Nov 29
 
 - turn dropdown on or off with settings editor
