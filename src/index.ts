@@ -91,7 +91,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       selector: '.jp-Notebook'
     })
 
-    notebookTracker.widgetAdded.connect((tracker, _) => {
+    notebookTracker.widgetAdded.connect((tracker, panel) => {
       let button: ToolbarButton | undefined
 
       function loadSetting(setting: ISettingRegistry.ISettings): void {
@@ -99,21 +99,15 @@ const plugin: JupyterFrontEndPlugin<void> = {
         const show_toolbar_button = setting.get('show_toolbar_button')
           .composite as boolean
 
-        console.debug(
-          `gridwidth extension, show_toolbar_button from settings is ${show_toolbar_button}`
-        )
         // actually this is typed as MenuBar
-        const menubar = tracker.currentWidget?.toolbar
-        if (!menubar) {
-          console.log('gridwidth: oops, too early')
-          return
-        }
+        const menubar = panel.toolbar
+
         if (show_toolbar_button) {
           if (button) {
             console.debug('gridwidth: button already on')
             return
           }
-          console.debug('gridwidth: adding button')
+          console.debug('gridwidth: adding button', panel.content.node)
           button = new CellWidthMenu(app, tracker).button
           menubar.insertItem(10, 'gridWidth', button)
         } else {
@@ -121,7 +115,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
             console.debug('gridwidth: button already off')
             return
           }
-          console.debug('gridwidth: disposing button')
+          console.debug('gridwidth: disposing button', panel.content.node)
           button.dispose()
           button = undefined
         }
@@ -129,7 +123,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
 
       Promise.all([app.restored, settingRegistry.load(PLUGIN_ID)]).then(
         ([_, setting]) => {
-          console.debug('gridwidth: triggering & arming loadSetting')
           loadSetting(setting)
           setting.changed.connect(loadSetting)
         }
