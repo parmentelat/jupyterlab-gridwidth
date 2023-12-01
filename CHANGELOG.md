@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 2023 Dec 1
+
+- make sure to use at least celltagsclasses 0.5.0
+
 ## 0.2.0 2023 Dec 1
 
 - fix #6
