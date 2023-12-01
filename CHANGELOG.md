@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 2023 Dec 1
+
+- fix #6
+- now the button gets added in the right panel
+  however there are times where it goes leftmost in the toolbar...
+
 ## 0.1.6 2023 Nov 29
 
 - an attempt at improving issue #6
