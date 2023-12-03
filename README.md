@@ -9,7 +9,7 @@ JupyterLab extension to
 
 ![Use case gif demo](README-use-case.gif)
 
-It was have preferred not to re-use the term 'split', because in jupyterlab _split_ already means, well, to split a cell into 2 cells...
+It was preferred not to re-use the term 'split', because in jupyterlab _split_ already means, well, to split a cell into 2 cells...
 
 ## Requirements
 
