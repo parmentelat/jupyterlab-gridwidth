@@ -1,6 +1,10 @@
 # Changelog
 
-## 0.2.3 2023 Dec 2
+## 0.2.4 2023 Dec 3
+
+- update README-use-case to show action on multiple cells
+
+## 0.2.3 2023 Dec 3
 
 - actions apply on all selected cells, not just the active one
 - more helpful readme with a gif micro demo
