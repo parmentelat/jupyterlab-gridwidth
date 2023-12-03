@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.3 2023 Dec 2
+
+- actions apply on all selected cells, not just the active one
+- more helpful readme with a gif micro demo
+
 ## 0.2.2 2023 Dec 1
 
 - explicitly require jupyterlab-celltagsclasses to be at least 0.5
