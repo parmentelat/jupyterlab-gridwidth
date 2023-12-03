@@ -11,7 +11,7 @@ import { ICommandPalette, ToolbarButton } from '@jupyterlab/apputils'
 import { INotebookTracker } from '@jupyterlab/notebook'
 import { ISettingRegistry } from '@jupyterlab/settingregistry'
 import { Cell } from '@jupyterlab/cells'
-
+ 
 import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses'
 import { md_toggle_multi } from 'jupyterlab-celltagsclasses'
 
@@ -59,7 +59,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
       app.commands.addCommand(command, {
         label: `Toogle Cell to ${num}/${den} of Full Width`,
         execute: () =>
-          apply_on_cells(notebookTracker, Scope.Active, (cell: Cell) => {
+          apply_on_cells(notebookTracker, Scope.Multiple, (cell: Cell) => {
             md_toggle_multi(
               cell,
               'tags',
@@ -80,7 +80,7 @@ const plugin: JupyterFrontEndPlugin<void> = {
     app.commands.addCommand(command, {
       label: 'Restore Full Cell Width',
       execute: () =>
-        apply_on_cells(notebookTracker, Scope.Active, (cell: Cell) => {
+        apply_on_cells(notebookTracker, Scope.Multiple, (cell: Cell) => {
           md_toggle_multi(cell, 'tags', '', ALL_GRIDWIDTHS_FULL)
         })
     })
