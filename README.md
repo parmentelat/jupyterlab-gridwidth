@@ -19,13 +19,14 @@ It was preferred not to re-use the term 'split', because in jupyterlab _split_ a
 
 ### as a replacement for for former `split-cell`
 
-you can use
+You can use
 
 - either press the `<->` button on the notebook toolbar and use the drop down list to perform cell width adjustment (shown in the demo gif above)
 - or keyboard `Alt+1, Alt+2` (meaning you want to use 1 / 2 of the horizontal space)
 - or type `gridwidth` in the Palette and pick 1/2
 - or command `gridwidth:toggle-1-2`
 - that you can bind to a keyboard shortcut of your choice
+- you can also apply width change to multiple cells which are selected (use `shift + click` or `shift + up/down` to select)
 
 ### to convert your notebooks
 
