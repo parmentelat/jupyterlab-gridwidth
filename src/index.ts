@@ -11,7 +11,7 @@ import { ICommandPalette, ToolbarButton } from '@jupyterlab/apputils'
 import { INotebookTracker } from '@jupyterlab/notebook'
 import { ISettingRegistry } from '@jupyterlab/settingregistry'
 import { Cell } from '@jupyterlab/cells'
- 
+
 import { Scope, apply_on_cells } from 'jupyterlab-celltagsclasses'
 import { md_toggle_multi } from 'jupyterlab-celltagsclasses'
 
