@@ -1,11 +1,11 @@
 {
-  "title": "gridwidth",
+  "title": "Gridwidth (Toogle Cell Width)",
   "description": "Settings for jupyterlab-gridwidth",
   "properties": {
     "show_toolbar_button": {
       "type": "boolean",
       "title": "display button in toolbar",
-      "description": "The <-> button in the notebook toolbar gives access to a dropdown that allows for quick access to all available cell sizes, in addition to the palette and keyboard shortcuts.",
+      "description": "The <-> button in the notebook toolbar gives access to a dropdown that allows for quick access to all available cell sizes, in addition to the palette and keyboard shortcuts. You can adjust cell width among full width, half width, 1/3, 2/3, etc.",
       "default": true
     }
   },
