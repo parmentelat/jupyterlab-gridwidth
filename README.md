@@ -7,6 +7,8 @@ JupyterLab extension to
 - tag cells so that they use a fraction of the width
 - can replace former 'split-cell' extension in the classic notebook
 
+![Use case gif demo](README-use-case.gif)
+
 It was have preferred not to re-use the term 'split', because in jupyterlab _split_ already means, well, to split a cell into 2 cells...
 
 ## Requirements
@@ -17,9 +19,10 @@ It was have preferred not to re-use the term 'split', because in jupyterlab _spl
 
 ### as a replacement for for former `split-cell`
 
-there is no button (yet) in this extension to do the equivalent of the former 'split-cell' thing, you can use
+you can use
 
-- either keyboard `Alt+1, Alt+2` (meaning you want to use 1 / 2 of the horizontal space)
+- either press the `<->` button on the notebook toolbar and use the drop down list to perform cell width adjustment (shown in the demo gif above)
+- or keyboard `Alt+1, Alt+2` (meaning you want to use 1 / 2 of the horizontal space)
 - or type `gridwidth` in the Palette and pick 1/2
 - or command `gridwidth:toggle-1-2`
 - that you can bind to a keyboard shortcut of your choice
