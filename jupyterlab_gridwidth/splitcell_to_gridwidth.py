@@ -20,7 +20,9 @@ def migrate_notebook(notebook):
             del cell['metadata']['cell_style']
             if 'tags' not in cell['metadata']:
                 cell['metadata']['tags'] = []
-            cell['metadata']['tags'].append('gridwidth-1-2')
+            # jlab won't accept dups in tags
+            if 'gridwidth-1-2' not in cell['metadata']['tags']:
+                cell['metadata']['tags'].append('gridwidth-1-2')
     # rewrite in same location
     jupytext.write(incoming, notebook)
 
