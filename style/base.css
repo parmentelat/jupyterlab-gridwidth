@@ -55,7 +55,7 @@
   }
 
   /* gridwidth-nn classes allow to use a fraction of the width */
-  .jp-WindowedPanel-window {
+  .jp-WindowedPanel-window, .jp-WindowedPanel-viewport {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
