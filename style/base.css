@@ -14,6 +14,9 @@
 }
 
 .jp-Notebook {
+
+  /* a leftover from an old extension that ended up here for convenience */
+
   & .cell-tag-level_basic {
     background-color: #c7e8c7 !important;
     border: 1px solid #040;
@@ -54,7 +57,9 @@
     display: none;
   }
 
-  /* gridwidth-nn classes allow to use a fraction of the width */
+  /* the crux of the matter */
+
+  /* gridwidth-p-q classes allow to use a fraction of the width */
   .jp-WindowedPanel-window, .jp-WindowedPanel-viewport {
     display: flex;
     flex-direction: row;
