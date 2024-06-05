@@ -32,7 +32,7 @@ const ALL_GRIDWIDTHS = [
   '2-6',
   '3-6',
   '4-6',
-  '5-6'
+  '5-6',
 ]
 
 const plugin: JupyterFrontEndPlugin<void> = {
