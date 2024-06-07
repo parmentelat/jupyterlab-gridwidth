@@ -47,6 +47,22 @@ const plugin: JupyterFrontEndPlugin<void> = {
   ) => {
     console.log('extension jupyterlab-gridwidth is activating')
 
+    // force notebook windowing-mode to 'none'
+    // unconditionally for now, will soon provide a less autocratic approach
+    settingRegistry.load('@jupyterlab/notebook-extension:tracker').then(
+      (nbSettings: ISettingRegistry.ISettings) => {
+        const former = nbSettings.get('windowingMode').composite as string
+        if (former === 'full') {
+          nbSettings.set('windowingMode', 'none'),
+          console.warn('jupyterlab-gridwidth: windowing mode TURNED OFF')
+        } else {
+          console.log(`jupyterlab-gridwidth: windowing mode already ${former} - unchanged`)
+        }
+      },
+      (err: Error) =>
+          console.error(`jupyterlab-gridwidth: Could not turn off windowing mode: ${err}`)
+    )
+
     let command
 
     // gridwidth-1-2..gridwidth-1-6
