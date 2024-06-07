@@ -11,6 +11,21 @@ JupyterLab extension to
 
 It was preferred not to re-use the term 'split', because in jupyterlab _split_ already means, well, to split a cell into 2 cells...
 
+## Warning: jlab 4.2 and windowingMode
+
+Starting with jlab 4.2, the `windowingMode` setting in the `notebook` extension defaults to `full`  
+This setting enables [an optimized display algorithm](https://jupyterlab.readthedocs.io/en/stable/developer/performance.html#windowed-list), that currently **is incompatible with the `gridwidth`** extension  
+So as a short-term workaround, for using this extension, you can set this back to `none` in the `Settings Editor`, like so
+
+```{image} README-windowing-mode.png
+:align: center
+:width: 600px
+```
+
+[see also this issue for more details](https://github.com/parmentelat/jupyterlab-gridwidth/issues/16)
+
+```python
+
 ## Requirements
 
 - JupyterLab >= 4.0.0
