@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.4.1 2024 Jun 9
+## 0.4.2 2024 Jun 9
 
 - workaround #16: revert to `defer` for `windowingMode` in the notebook settings,
   unless the local setting 'windowing_mode_defer' is set to `false`
