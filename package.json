@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab-gridwidth",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "description": "Jlab extension that adjusts cell width among full width, half width, 1/3, 2/3, etc. Gridwidth replaces former 'split-cell' extension in the classic notebook.",
     "keywords": [
         "jupyter",

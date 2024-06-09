@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.1 2024 Jun 9
+
+- workaround #16: revert to `defer` for `windowingMode` in the notebook settings,
+  unless the local setting 'windowing_mode_defer' is set to `false`
+
+## 0.3.1 2024 Feb 24
+
+- splitcell-to-gridwidth is careful to avoid duplicate tags
+
+## 0.3.0 2024 Feb 24
+
+- fix #14
+
 ## 0.2.4 2023 Dec 3
 
 - update README-use-case to show action on multiple cells
