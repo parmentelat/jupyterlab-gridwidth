@@ -47,25 +47,6 @@ const plugin: JupyterFrontEndPlugin<void> = {
   ) => {
     console.log('extension jupyterlab-gridwidth is activating')
 
-    const adjust_windowing_mode = () => {
-      // force notebook windowing-mode to 'defer'
-      // will be done - or not, depending on turn_off_windowing_mode
-      // once our settings are loaded
-      settingRegistry.load('@jupyterlab/notebook-extension:tracker').then(
-        (nbSettings: ISettingRegistry.ISettings) => {
-          const former = nbSettings.get('windowingMode').composite as string
-          if (former === 'full') {
-            nbSettings.set('windowingMode', 'defer'),
-            console.warn('jupyterlab-gridwidth: windowing mode FORCED back to "defer"')
-          } else {
-            console.log(`jupyterlab-gridwidth: windowing mode already ${former} - unchanged`)
-          }
-        },
-        (err: Error) =>
-            console.error(`jupyterlab-gridwidth: Could not set windowing mode: ${err}`)
-      )
-    }
-
     let command
 
     // gridwidth-1-2..gridwidth-1-6
@@ -141,8 +122,23 @@ const plugin: JupyterFrontEndPlugin<void> = {
         const windowing_mode_defer = setting.get('windowing_mode_defer')
           .composite as boolean
         if (windowing_mode_defer) {
-          adjust_windowing_mode()
-        }
+            // force notebook windowing-mode to 'defer'
+            // will be done - or not, depending on turn_off_windowing_mode
+            // once our settings are loaded
+            settingRegistry.load('@jupyterlab/notebook-extension:tracker').then(
+              (nbSettings: ISettingRegistry.ISettings) => {
+                const former = nbSettings.get('windowingMode').composite as string
+                if (former === 'full') {
+                  nbSettings.set('windowingMode', 'defer'),
+                  console.warn('jupyterlab-gridwidth: windowing mode FORCED back to "defer"')
+                } else {
+                  console.log(`jupyterlab-gridwidth: windowing mode already ${former} - unchanged`)
+                }
+              },
+              (err: Error) =>
+                  console.error(`jupyterlab-gridwidth: Could not set windowing mode: ${err}`)
+            )
+          }
       }
 
       Promise.all([app.restored, settingRegistry.load(PLUGIN_ID)]).then(
