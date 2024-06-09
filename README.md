@@ -15,7 +15,7 @@ It was preferred not to re-use the term 'split', because in jupyterlab _split_ a
 
 Starting with jlab 4.2, the `windowingMode` setting in the `notebook` extension defaults to `full`  
 This setting enables [an optimized display algorithm](https://jupyterlab.readthedocs.io/en/stable/developer/performance.html#windowed-list), that currently **is incompatible with the `gridwidth`** extension  
-So as a short-term workaround, for using this extension, you can set this back to `none` in the `Settings Editor`, see the illustration below
+So as a short-term workaround, for using this extension, you can set this back to `defer` in the `Settings Editor`, as illustrated below
 
 ```{admonition} Important Note
 :class: warning
