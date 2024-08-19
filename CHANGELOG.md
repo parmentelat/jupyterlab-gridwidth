@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.3 2024 Aug 19
+
+- cleanup css, remove rules that no longer belong here
+  because they are now in either of jupyterlab-{courselevels,hidecell}
+
 ## 0.4.2 2024 Jun 9
 
 - workaround #16: revert to `defer` for `windowingMode` in the notebook settings,
