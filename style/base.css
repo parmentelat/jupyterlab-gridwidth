@@ -13,51 +13,9 @@
   border-radius: 3px;
 }
 
+/* the crux of the matter */
+
 .jp-Notebook {
-
-  /* a leftover from an old extension that ended up here for convenience */
-
-  & .cell-tag-level_basic {
-    background-color: #c7e8c7 !important;
-    border: 1px solid #040;
-    border-radius: 10px;
-    margin-bottom: 6px;
-  }
-
-  & .cell-tag-level_intermediate {
-    background-color: #cfcfe9 !important;
-    border: 1px solid #004;
-    border-radius: 10px;
-    margin-bottom: 6px;
-  }
-
-  & .cell-tag-level_advanced {
-    background-color: #f7d1d1 !important;
-    border: 1px solid #400;
-    border-radius: 10px;
-    margin-bottom: 6px;
-  }
-
-  & .cell-tag-framed_cell {
-    border: 3px ridge #400;
-    border-radius: 10px;
-    margin-bottom: 6px;
-  }
-
-  & .cell-tag-licence * {
-    color: #a0a0a080;
-  }
-
-  /* hide only the input of cells with the tag 'hide-input' */
-  & .cell-tag-hide-input .jp-Cell-inputWrapper .jp-Cell-inputArea {
-    display: none;
-  }
-
-  & .cell-tag-hide-output .jp-Cell-outputWrapper .jp-Cell-outputArea {
-    display: none;
-  }
-
-  /* the crux of the matter */
 
   /* gridwidth-p-q classes allow to use a fraction of the width */
   .jp-WindowedPanel-window, .jp-WindowedPanel-viewport {
